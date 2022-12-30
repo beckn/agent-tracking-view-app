@@ -1,7 +1,15 @@
 import React from "react";
 import useDeepCompareEffect from "use-deep-compare-effect";
 
-const MapChild = ({ center, zoom, children, style, ...options }) => {
+const MapChild = ({
+  center,
+  start,
+  end,
+  zoom,
+  children,
+  style,
+  ...options
+}) => {
   const ref = React.useRef(null);
   const [map, setMap] = React.useState();
 
@@ -21,7 +29,6 @@ const MapChild = ({ center, zoom, children, style, ...options }) => {
         travelMode: "DRIVING",
       })
       .then((response, status) => {
-        console.log("status", response);
         directionsRenderer.setDirections(response);
       })
       .catch((e) => {
@@ -45,11 +52,7 @@ const MapChild = ({ center, zoom, children, style, ...options }) => {
         })
       );
     }
-    calculateAndDisplayRoute(
-      "J. P. Nagar, Bengaluru, Karnataka, India",
-      "Wework Galaxy, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka, India",
-      map
-    );
+    calculateAndDisplayRoute("12.906343,77.585683", "12.973437,77.608771", map);
   }, [ref, map, center, zoom]);
 
   return (
