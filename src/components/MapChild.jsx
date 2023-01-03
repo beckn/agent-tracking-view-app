@@ -52,7 +52,7 @@ const MapChild = ({
         })
       );
     }
-    calculateAndDisplayRoute("12.906343,77.585683", "12.973437,77.608771", map);
+    calculateAndDisplayRoute(start, end, map);
   }, [ref, map, center, zoom]);
 
   return (

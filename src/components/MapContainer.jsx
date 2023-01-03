@@ -11,6 +11,8 @@ const render = (status) => {
 };
 
 const MapContainer = () => {
+  // const [start, setStart] = useState("12.906343,77.585683");
+  // const [end, setEnd] = useState("12.973437,77.608771");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [trackingUrl, setTrackingUrl] = useState("");
@@ -43,6 +45,10 @@ const MapContainer = () => {
   }, [trackingUrl]);
 
   useIntervalAsync(fetchTrackingDetails, 2000);
+
+  if (!start.length || !end.length) {
+    return <p>Fetchng pickup and source location</p>;
+  }
 
   return (
     <Wrapper render={render} apiKey={"AIzaSyDj_jBuujsEk8mkIva0xG6_H73oJEytXEA"}>
