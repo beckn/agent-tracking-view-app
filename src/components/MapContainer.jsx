@@ -8,35 +8,37 @@ import useIntervalAsync from "../customHook/useIntervalAsync";
 
 const render = (status) => {
   if (status === Status.FAILURE) return <p>My map</p>;
-  return <div
-  style={{
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-  }}
->
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column",
-    }}
-  >
-    <Oval
-      height={60}
-      width={60}
-      color="#f37a20"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-      ariaLabel="oval-loading"
-      secondaryColor="gray"
-      strokeWidth={2}
-      strokeWidthSecondary={2}
-    />
-    <p>Map is loading</p>
-  </div>
-</div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Oval
+          height={60}
+          width={60}
+          color="#f37a20"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="gray"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
+        />
+        <p>Map is loading</p>
+      </div>
+    </div>
+  );
 };
 
 const MapContainer = () => {
@@ -63,7 +65,7 @@ const MapContainer = () => {
       await fetch(trackingUrl)
         .then((res) => res.json())
         .then((result) => {
-          const gps = "12.906343,77.585683".split(",");
+          const gps = result.gps.split(",");
           setVehicleLat(parseFloat(gps[0]));
           setVehicleLang(parseFloat(gps[1]));
         })
